@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -74,10 +75,29 @@ public class FileUtils {
 			e.printStackTrace();
 		}
 	}
-	protected static double[][] normalizeLearningSet(double[][] learningSet)  { 
-		double[][] normalizedLearningSet = new double[learningSet.length][];  
-		//.. enter your code here 
-		return normalizedLearningSet;  } 
-	}
-	 
 
+	protected static double[][] normalizeLearningSet(double[][] learningSet) {
+		double[][] normalizedLearningSet = new double[learningSet.length][learningSet.length];
+		double minValue;
+		double maxValue;
+		int i = 0;
+		int j = 0;
+
+		for (double[] ds : learningSet) {
+
+			minValue = Arrays.stream(ds).min().getAsDouble();
+			maxValue = Arrays.stream(ds).max().getAsDouble();
+
+			for (double d : ds) {
+
+				normalizedLearningSet[i][j] = ((d - minValue) / (maxValue - minValue));
+				j++;
+			}
+			i++;
+			j = 0;
+		}
+
+		;
+		return normalizedLearningSet;
+	}
+}

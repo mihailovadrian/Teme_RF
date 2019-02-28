@@ -3,8 +3,8 @@ package ro.usv.rf;
 public class MainClass {
 
 	public static void main(String[] args) {
-		double[][] learningSet = FileUtils.readLearningSetFromFile("e://in.txt");
-		FileUtils.writeLearningSetToFile("e://out.csv", FileUtils.normalizeLearningSet(learningSet));
+		double[][] learningSet = FileUtils.readLearningSetFromFile("d://in.txt");
+		FileUtils.writeLearningSetToFile("d://out.csv", FileUtils.normalizeLearningSet(learningSet));
 
 	}
 
